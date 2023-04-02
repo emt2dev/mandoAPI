@@ -1,12 +1,16 @@
 const express = require('express') //included in express install
 const mongoose = require('mongoose')
+const cors = require('cors')
+
 const Mando = require('./models/mandoModel')
 
 const app = express()
-const port = 3000
+const port = 3001
 
+app.use(cors)
 app.use(express.json())
 app.use(express.urlencoded({ extended: false}))
+
 
 // here we connect to mongdo db
 try {
@@ -52,7 +56,7 @@ app.get('/mando/:id', async (req, res)=> {
     }
 })
 
-// get all mandos
+// create new mando
 
 app.post('/mando', async (req, res) => {
 
